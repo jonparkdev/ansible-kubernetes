@@ -1,0 +1,14 @@
+all:
+  hosts:
+  children:
+    k8s_all:
+      children:
+        k8s_control_plane:
+          hosts:
+            10.48.0.202:
+        k8s_workers:
+          hosts:
+            10.48.0.200:
+            10.48.0.201:
+      vars:
+        remote_user: ubuntu

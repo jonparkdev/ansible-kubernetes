@@ -1,0 +1,13 @@
+---
+# A role created by Jeff Geerling to configure some basic vm setting for a vanilla machine
+# https://github.com/geerlingguy/ansible-role-security
+- name: Set up default VM security settings
+  include_role:
+    name: geerlingguy.security
+  tags: ['security', 'ssh']
+
+# Install required client tools to bootstrap kubernetes cluster
+# - name: Install kubectl
+#   apt:
+#     name:
+#       - 

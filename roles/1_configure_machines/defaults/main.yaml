@@ -1,0 +1,3 @@
+---
+# geerling.security
+security_sudoers_passwordless: ['ubuntu']

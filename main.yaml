@@ -1,0 +1,11 @@
+---
+- hosts: k8s_all
+  remote_user: ubuntu
+  become: yes
+
+  vars_files:
+    - config.yml
+
+  roles:
+
+    - role: 1_configure_machines
