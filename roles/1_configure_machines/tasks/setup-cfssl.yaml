@@ -1,0 +1,32 @@
+--- 
+- name: Ensure dependencies are installed.
+  apt:
+    name:
+      - curl
+    state: present
+
+- name: Get cfssl binary from Github
+  get_url:
+    url: "https://github.com/cloudflare/cfssl/releases/download/{{ cfssl_package_version }}/{{ cfssl_binary }}"
+    dest: "/usr/local/bin/cfssl"
+    mode: '0755'  # Set the appropriate file permissions for execution
+
+- name: Validate cfssl
+  shell: /usr/local/bin/cfssl version
+  register: cfssl_version
+  changed_when: false
+  failed_when: "'Version' not in cfssl_version.stdout"
+  ignore_errors: true
+
+- name: Get cfssljson binary from Github
+  get_url:
+    url: "https://github.com/cloudflare/cfssl/releases/download/{{ cfssl_package_version }}/{{ cfssljson_binary }}"
+    dest: "/usr/local/bin/cfssljson"
+    mode: '0755'  # Set the appropriate file permissions for execution
+
+- name: Validate cfssljson
+  shell: /usr/local/bin/cfssljson --version
+  register: cfssl_version
+  changed_when: false
+  failed_when: "'Version' not in cfssl_version.stdout"
+  ignore_errors: true

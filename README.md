@@ -12,7 +12,8 @@ To become a better Kubernetes practioner I know I have to move deeper down the l
   - [1. Setting up the virtual machines](#1-setting-up-the-virtual-machines)
     - [IP Address](#ip-address)
     - [SSH](#ssh)
-      - [Update the VM and install required software](#update-the-vm-and-install-required-software)
+    - [Update the VM and install required software](#update-the-vm-and-install-required-software)
+    - [Overview](#overview)
 
 
 ## What you Will Need:
@@ -66,8 +67,21 @@ Since I only have 3 machines, I ran the command:
 
 for each machine.
 
-#### Update the VM and install required software
+### Update the VM and install required software
 
+The code for this can be found in [/roles/1_configure_machines](https://github.com/jonparkdev/ansible-kubernetes/tree/main/roles/1_configure_machines) directory.
 
+Summary:
+- Ensure virtual machine have standard security configuration using [Jeff Geerling](https://www.youtube.com/@JeffGeerling)'s [Ansible Security Role](https://github.com/geerlingguy/ansible-role-security)
+- Install Kubectl using apt so machines can interface with the cluster
+- Install cfssl and cfssljson for provision required certificates (See next section)
 
+### Overview
 
+If you are following to [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way), this subsection maps one to one with the following sections:
+
+- 01-prequesites
+- 02-client-tools
+- 03-compute-resources
+
+---

@@ -6,8 +6,6 @@
     name: geerlingguy.security
   tags: ['security', 'ssh']
 
-# Install required client tools to bootstrap kubernetes cluster
-# - name: Install kubectl
-#   apt:
-#     name:
-#       - 
+- include_tasks: setup-kubectl.yaml
+
+- include_tasks: setup-cfssl.yaml
